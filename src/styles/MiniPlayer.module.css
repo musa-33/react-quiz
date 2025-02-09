@@ -92,7 +92,7 @@
   display: none;
 }
 
-.floatingBtn img {
+.floatingBtn .player {
   transform: scale(0);
   display: none;
 }

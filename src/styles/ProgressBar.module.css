@@ -1,4 +1,3 @@
-
 /* progress bar component */
 .progressBar {
   width: calc(100vw - 100px);
@@ -90,7 +89,7 @@
 .tooltip {
   position: absolute;
   top: -70px;
-  left: calc(70% - 65px);
+  /* left: calc(70% - 65px); */
   width: 130px;
   background-color: var(--fontPrimary);
   color: #fff;

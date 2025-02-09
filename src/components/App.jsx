@@ -6,25 +6,43 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Quiz from "./pages/Quiz";
 import Result from "./pages/Result";
-import SignUp from "./pages/SignUp";
+import Signup from "./pages/Signup";
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
+    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <div className="App">
         <AuthProvider>
           <Layout>
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/quiz" element={<Quiz />} />
-              <Route path="/result" element={<Result />} />
+              <Route exact path="/" element={<Home />} />
+              <Route
+                path="/signup"
+                element={
+                  <PublicRoute>
+                    <Signup />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <PublicRoute>
+                    <Login />
+                  </PublicRoute>
+                }
+              />
+              <Route path="/*" element={<PrivateRoute />}>
+                <Route path="quiz/:id" element={<Quiz />} />
+                <Route path="result/:id" element={<Result />} />
+              </Route>
             </Routes>
           </Layout>
         </AuthProvider>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 

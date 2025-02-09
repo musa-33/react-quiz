@@ -40,7 +40,7 @@ export function AuthProvider({ children }) {
 
   function login(email, password) {
     const auth = getAuth();
-    return signInWithEmailAndPassword(auth, password);
+    return signInWithEmailAndPassword(auth, email, password);
   }
 
   function logout() {
